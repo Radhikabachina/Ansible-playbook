@@ -15,3 +15,7 @@
     service:
       name: httpd
       state: started
+  - name: open firewall for httpd
+    command: firewall-cmd --zone=public --permanent --add-port=80/tcp
+  - name: restart firewall
+    command: firewall-cmd --reload
