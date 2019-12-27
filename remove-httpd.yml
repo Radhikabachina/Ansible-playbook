@@ -1,6 +1,6 @@
 ---
 - name: Remove httpd
-  hosts: controller
+  hosts: appserver
   become: true
   
   tasks:
@@ -8,3 +8,7 @@
     yum:
       name: httpd
       state: absent
+  - name: open firewall for httpd
+    command: firewall-cmd --zone=public --permanent --del-port=80/tcp
+  - name: restart firewall
+    command: firewall-cmd --reload
