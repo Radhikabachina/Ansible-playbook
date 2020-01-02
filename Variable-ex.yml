@@ -13,6 +13,8 @@
         copy:
           dest: /var/www/html/index.html
           content: "{{ my_cont1 }}"
+      - name: direct command
+        command: "echo '2nd line in the web page' >> /var/www/html/index.html"
       - name: start the httpd service
         service:
           name: httpd
