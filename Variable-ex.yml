@@ -16,7 +16,7 @@
         with_items:
         - httpd 
         - wget 
-        - mysql_server
+        - mariadb
       - name: Insert index page
         copy:
           dest: /var/www/html/index.html
