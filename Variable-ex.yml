@@ -1,0 +1,30 @@
+---
+    - name: Install httpd on the local server
+      hosts: appserver
+      become: true
+      vars:
+        my_cont1: "THIS IS A TEST WEBSERVER COPIED VIA VARIABLES"
+      tasks:
+      - name: Install httpd on web server
+        yum:
+          name: httpd
+          state: present
+      - name: Insert index page
+        copy:
+          dest: /var/www/html/index.html
+          content: "{{ my_cont1 }}"
+      - name: start the httpd service
+        service:
+          name: httpd
+          state: started
+      - name: Enabling the httpd service
+        service:
+          name: httpd
+          enabled: yes
+      - name: open firewall for httpd
+        command: firewall-cmd --zone=public --permanent --add-port=80/tcp
+      - name: restart firewall
+        command: firewall-cmd --reload
+      - name: echo
+        command: "echo HI there"
+    
