@@ -4,6 +4,9 @@
       become: true
       vars:
         my_cont1: "THIS IS A TEST WEBSERVER COPIED VIA VARIABLES"
+      vars_prompt:
+        name: var1
+        prompt: Enter any value !!!
       tasks:
       - name: Install httpd on web server
         yum:
@@ -12,7 +15,7 @@
       - name: Insert index page
         copy:
           dest: /var/www/html/index.html
-          content: "{{ my_cont1 }}"
+          content: "{{ var1 }}"
       - name: direct command
         command: "echo '2nd line in the web page' >> /var/www/html/index.html"
       - name: start the httpd service
