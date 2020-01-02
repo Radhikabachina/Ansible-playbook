@@ -12,11 +12,11 @@
       - name: Install httpd on web server
         yum:
           name: "{{ item }}"
-          with_items:
-          - httpd 
-          - wget 
-          - mysql_server
           state: present
+        with_items:
+        - httpd 
+        - wget 
+        - mysql_server
       - name: Insert index page
         copy:
           dest: /var/www/html/index.html
