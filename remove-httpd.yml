@@ -9,6 +9,6 @@
       name: httpd
       state: absent
   - name: open firewall for httpd
-    command: firewall-cmd --zone=public --permanent --del-port=80/tcp
+    command: firewall-cmd --zone=public --permanent --remove-port=80/tcp
   - name: restart firewall
     command: firewall-cmd --reload
