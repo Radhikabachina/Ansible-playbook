@@ -1,6 +1,6 @@
 ---
 - name: Install httpd on the local server
-  hosts: appserver
+  hosts: webserver
   become: true
   tasks:
   - name: Install httpd on web server

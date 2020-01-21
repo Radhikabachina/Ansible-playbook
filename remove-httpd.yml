@@ -1,6 +1,6 @@
 ---
 - name: Remove httpd
-  hosts: appserver
+  hosts: webserver
   become: true
   
   tasks:
